@@ -1,0 +1,23 @@
+{
+  "name": "voltslot-ev-charging",
+  "version": "1.0.0",
+  "description": "VoltSlot - EV Charging Station Locator & Booking (backend API + web app). Aarya FR-01..07, Raushan FR-08..15",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test --test-concurrency=1 tests/*.test.js",
+    "demo:concurrency": "node tests/demo_concurrency.js",
+    "seed:harry": "node scripts/seed_harry.js",
+    "test:aarya": "node tests/aarya_smoke_test.js",
+    "test:ui": "python3 tests/ui_flow.py"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.6",
+    "express": "^4.22.3",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.24.5"
+  }
+}

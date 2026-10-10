@@ -1,0 +1,36 @@
+FR-01 login / register
+  PASS  T04 wrong password shows a clear error
+  PASS  T01 registration logs the new user in
+  PASS  T02 duplicate email rejected with a clear message
+  PASS  T03 login as HARRY opens the station list
+FR-03 / FR-04 search + geolocation
+  PASS  T05 search "Saket" shows only South Delhi
+  PASS  charger-type filter works
+  PASS  T06 nearby stations carry distances, nearest first
+FR-05 / FR-06 availability + booking
+  PASS  T07 free slots are shown for tomorrow
+  PASS  T08 booking shows a confirmation message
+  PASS  the grid reloads and marks my booking
+FR-11 / FR-09 history + cancel
+  PASS  T14 booking appears under Active
+  PASS  T10 cancel releases the booking (moves to History as cancelled)
+FR-07 double-booking demo
+  PASS  T09 exactly one driver is Booked and one Rejected
+  PASS  the loser sees SLOT_UNAVAILABLE
+FR-10 charging session (slot that is running now)
+  PASS  a running slot exists for the demo
+  PASS  T12 session started (End charging button appears)
+  PASS  T13 end time / energy / cost stored and shown
+FR-13 admin
+  PASS  admin overview shows statistics
+  PASS  T16 admin created a station and it is listed
+  PASS  admin added a charger to the new station
+  PASS  T16 admin blocked a slot and the grid shows it blocked
+responsive layout (phone width 390 px)
+  PASS  phone width: no sideways scrolling on stations
+  PASS  phone width: no sideways scrolling on station page
+  PASS  phone width: no sideways scrolling on bookings
+  PASS  phone width: no sideways scrolling on admin
+  PASS  no JavaScript errors in the browser console
+
+26 passed, 0 failed

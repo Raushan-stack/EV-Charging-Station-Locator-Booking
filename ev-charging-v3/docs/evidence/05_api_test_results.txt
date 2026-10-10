@@ -1,0 +1,402 @@
+TAP version 13
+# ◇ injected env (1) from .env
+# Subtest: role-based access: anonymous 401, normal user 403, admin 200
+ok 1 - role-based access: anonymous 401, normal user 403, admin 200
+  ---
+  duration_ms: 190.373314
+  type: 'test'
+  ...
+# Subtest: role is read from the database, not trusted from the token
+ok 2 - role is read from the database, not trusted from the token
+  ---
+  duration_ms: 11.022564
+  type: 'test'
+  ...
+# Subtest: T16 station -> charger -> slots lifecycle, changes are reflected in availability
+ok 3 - T16 station -> charger -> slots lifecycle, changes are reflected in availability
+  ---
+  duration_ms: 211.554972
+  type: 'test'
+  ...
+# Subtest: single slot creation validates input and refuses overlaps
+ok 4 - single slot creation validates input and refuses overlaps
+  ---
+  duration_ms: 43.030329
+  type: 'test'
+  ...
+# Subtest: dashboard returns totals and per-station utilization
+ok 5 - dashboard returns totals and per-station utilization
+  ---
+  duration_ms: 13.590301
+  type: 'test'
+  ...
+# Subtest: admin can end a stuck session on behalf of a user
+ok 6 - admin can end a stuck session on behalf of a user
+  ---
+  duration_ms: 33.483148
+  type: 'test'
+  ...
+# ◇ injected env (1) from .env
+# Subtest: T01 valid registration returns token + user (no password hash leaked)
+ok 7 - T01 valid registration returns token + user (no password hash leaked)
+  ---
+  duration_ms: 242.552572
+  type: 'test'
+  ...
+# Subtest: T02 duplicate email and duplicate name (any letter case) are rejected with 409
+ok 8 - T02 duplicate email and duplicate name (any letter case) are rejected with 409
+  ---
+  duration_ms: 786.114
+  type: 'test'
+  ...
+# Subtest: database also enforces unique names (uq_users_name), not just the API
+ok 9 - database also enforces unique names (uq_users_name), not just the API
+  ---
+  duration_ms: 5.657198
+  type: 'test'
+  ...
+# Subtest: registration validation: weak password, bad email, bad phone, @ in name, missing fields
+ok 10 - registration validation: weak password, bad email, bad phone, @ in name, missing fields
+  ---
+  duration_ms: 47.207862
+  type: 'test'
+  ...
+# Subtest: T03/T04 login by email or by name; wrong password / unknown user give the SAME 401 message
+ok 11 - T03/T04 login by email or by name; wrong password / unknown user give the SAME 401 message
+  ---
+  duration_ms: 464.353161
+  type: 'test'
+  ...
+# Subtest: deactivated account cannot log in
+ok 12 - deactivated account cannot log in
+  ---
+  duration_ms: 127.185507
+  type: 'test'
+  ...
+# Subtest: profile update validates input and keeps names unique
+ok 13 - profile update validates input and keeps names unique
+  ---
+  duration_ms: 284.673534
+  type: 'test'
+  ...
+# Subtest: passwords are stored as bcrypt hashes, never plain text
+ok 14 - passwords are stored as bcrypt hashes, never plain text
+  ---
+  duration_ms: 165.405452
+  type: 'test'
+  ...
+# Subtest: T05 search by name/address, charger type and free slots
+ok 15 - T05 search by name/address, charger type and free slots
+  ---
+  duration_ms: 32.669569
+  type: 'test'
+  ...
+# Subtest: stations under maintenance are not listed in search
+ok 16 - stations under maintenance are not listed in search
+  ---
+  duration_ms: 17.113705
+  type: 'test'
+  ...
+# Subtest: T06 geolocation: distances are right, sorted nearest first, radius filter and validation
+ok 17 - T06 geolocation: distances are right, sorted nearest first, radius filter and validation
+  ---
+  duration_ms: 27.218954
+  type: 'test'
+  ...
+# Subtest: station details + 404 / bad id
+ok 18 - station details + 404 / bad id
+  ---
+  duration_ms: 18.794902
+  type: 'test'
+  ...
+# Subtest: T07 availability grid: shows free / booked / blocked / past and marks my own booking
+ok 19 - T07 availability grid: shows free / booked / blocked / past and marks my own booking
+  ---
+  duration_ms: 80.443831
+  type: 'test'
+  ...
+# ◇ injected env (1) from .env
+# Subtest: T08 valid booking commits: booking row + slot BOOKED + audit row
+ok 20 - T08 valid booking commits: booking row + slot BOOKED + audit row
+  ---
+  duration_ms: 138.226283
+  type: 'test'
+  ...
+# Subtest: booked slot disappears from Available_Slots_View
+ok 21 - booked slot disappears from Available_Slots_View
+  ---
+  duration_ms: 24.931242
+  type: 'test'
+  ...
+# Subtest: T15 failure in the middle of a booking rolls back everything (no partial data)
+ok 22 - T15 failure in the middle of a booking rolls back everything (no partial data)
+  ---
+  duration_ms: 34.315107
+  type: 'test'
+  ...
+# Subtest: already booked slot is rejected with 409 SLOT_UNAVAILABLE
+ok 23 - already booked slot is rejected with 409 SLOT_UNAVAILABLE
+  ---
+  duration_ms: 24.564646
+  type: 'test'
+  ...
+# Subtest: blocked slot cannot be booked
+ok 24 - blocked slot cannot be booked
+  ---
+  duration_ms: 9.276008
+  type: 'test'
+  ...
+# Subtest: slot in the past (already ended) is rejected
+ok 25 - slot in the past (already ended) is rejected
+  ---
+  duration_ms: 10.060593
+  type: 'test'
+  ...
+# Subtest: non-existent slot -> 404 SLOT_NOT_FOUND
+ok 26 - non-existent slot -> 404 SLOT_NOT_FOUND
+  ---
+  duration_ms: 11.951555
+  type: 'test'
+  ...
+# Subtest: charger under maintenance / inactive station cannot be booked
+ok 27 - charger under maintenance / inactive station cannot be booked
+  ---
+  duration_ms: 17.77579
+  type: 'test'
+  ...
+# Subtest: one user cannot hold two overlapping active bookings
+ok 28 - one user cannot hold two overlapping active bookings
+  ---
+  duration_ms: 40.611574
+  type: 'test'
+  ...
+# Subtest: deactivated user cannot book (auth layer rejects)
+ok 29 - deactivated user cannot book (auth layer rejects)
+  ---
+  duration_ms: 12.014126
+  type: 'test'
+  ...
+# Subtest: database constraint alone blocks a 2nd active booking even if a bug bypassed the procedure
+ok 30 - database constraint alone blocks a 2nd active booking even if a bug bypassed the procedure
+  ---
+  duration_ms: 9.807818
+  type: 'test'
+  ...
+# Subtest: check constraints reject bad data at the database level
+ok 31 - check constraints reject bad data at the database level
+  ---
+  duration_ms: 4.9881
+  type: 'test'
+  ...
+# ◇ injected env (1) from .env
+# Subtest: T10 valid cancellation: booking CANCELLED, slot released, slot bookable again
+ok 32 - T10 valid cancellation: booking CANCELLED, slot released, slot bookable again
+  ---
+  duration_ms: 206.225281
+  type: 'test'
+  ...
+# Subtest: T11a cancelling twice is rejected (INVALID_BOOKING_STATE)
+ok 33 - T11a cancelling twice is rejected (INVALID_BOOKING_STATE)
+  ---
+  duration_ms: 35.168488
+  type: 'test'
+  ...
+# Subtest: T11b cancelling someone else's booking is forbidden and changes nothing
+ok 34 - T11b cancelling someone else's booking is forbidden and changes nothing
+  ---
+  duration_ms: 22.17407
+  type: 'test'
+  ...
+# Subtest: T11c cancelling inside the cut-off window (slot starts in 30 min) is rejected; admin may override
+ok 35 - T11c cancelling inside the cut-off window (slot starts in 30 min) is rejected; admin may override
+  ---
+  duration_ms: 33.314617
+  type: 'test'
+  ...
+# Subtest: T11d cancelling a booking whose session is in progress / completed is rejected
+ok 36 - T11d cancelling a booking whose session is in progress / completed is rejected
+  ---
+  duration_ms: 39.890456
+  type: 'test'
+  ...
+# Subtest: T11e unknown booking id -> 404, malformed id -> 400
+ok 37 - T11e unknown booking id -> 404, malformed id -> 400
+  ---
+  duration_ms: 27.355417
+  type: 'test'
+  ...
+# ◇ injected env (1) from .env
+# Subtest: T09 two users request the same slot at the same moment: exactly one wins
+ok 38 - T09 two users request the same slot at the same moment: exactly one wins
+  ---
+  duration_ms: 162.792498
+  type: 'test'
+  ...
+# Subtest: T09b stress: 25 users x same slot -> exactly 1 success, 24 clean rejections, 0 server errors
+ok 39 - T09b stress: 25 users x same slot -> exactly 1 success, 24 clean rejections, 0 server errors
+  ---
+  duration_ms: 313.38106
+  type: 'test'
+  ...
+# Subtest: T09c same user, two different overlapping slots at once: only one succeeds (user-row lock)
+ok 40 - T09c same user, two different overlapping slots at once: only one succeeds (user-row lock)
+  ---
+  duration_ms: 48.986247
+  type: 'test'
+  ...
+# Subtest: T09d booking racing a cancellation of the same slot never leaves two active bookings
+ok 41 - T09d booking racing a cancellation of the same slot never leaves two active bookings
+  ---
+  duration_ms: 57.968633
+  type: 'test'
+  ...
+# ◇ injected env (1) from .env
+# Subtest: T14 booking history returns only the caller's bookings with station/slot/session/cost info
+ok 42 - T14 booking history returns only the caller's bookings with station/slot/session/cost info
+  ---
+  duration_ms: 265.625542
+  type: 'test'
+  ...
+# Subtest: history filters: status, active, pagination
+ok 43 - history filters: status, active, pagination
+  ---
+  duration_ms: 57.159996
+  type: 'test'
+  ...
+# Subtest: session history + totals
+ok 44 - session history + totals
+  ---
+  duration_ms: 24.630674
+  type: 'test'
+  ...
+# Subtest: history requires login; users cannot read another user's booking by id
+ok 45 - history requires login; users cannot read another user's booking by id
+  ---
+  duration_ms: 31.213576
+  type: 'test'
+  ...
+# Subtest: FR-12 views agree with the base tables
+ok 46 - FR-12 views agree with the base tables
+  ---
+  duration_ms: 14.85099
+  type: 'test'
+  ...
+# Subtest: availability API (backed by views) is public and filterable
+ok 47 - availability API (backed by views) is public and filterable
+  ---
+  duration_ms: 29.906697
+  type: 'test'
+  ...
+# ◇ injected env (1) from .env
+# Subtest: T12+T13 full session: start -> end stores time, energy, cost, payment and releases resource
+ok 48 - T12+T13 full session: start -> end stores time, energy, cost, payment and releases resource
+  ---
+  duration_ms: 189.476114
+  type: 'test'
+  ...
+# Subtest: session cannot start for a CANCELLED booking
+ok 49 - session cannot start for a CANCELLED booking
+  ---
+  duration_ms: 34.53231
+  type: 'test'
+  ...
+# Subtest: session cannot start too early (window opens 15 min before slot)
+ok 50 - session cannot start too early (window opens 15 min before slot)
+  ---
+  duration_ms: 21.512109
+  type: 'test'
+  ...
+# Subtest: session may start in the 15-minute early window
+ok 51 - session may start in the 15-minute early window
+  ---
+  duration_ms: 34.678319
+  type: 'test'
+  ...
+# Subtest: session cannot start after the slot has ended
+ok 52 - session cannot start after the slot has ended
+  ---
+  duration_ms: 23.13916
+  type: 'test'
+  ...
+# Subtest: only the booking owner can start / end; double start and double end rejected
+ok 53 - only the booking owner can start / end; double start and double end rejected
+  ---
+  duration_ms: 55.215759
+  type: 'test'
+  ...
+# Subtest: invalid energy values are rejected and the session stays ACTIVE
+ok 54 - invalid energy values are rejected and the session stays ACTIVE
+  ---
+  duration_ms: 88.421882
+  type: 'test'
+  ...
+# Subtest: unknown session / booking ids
+ok 55 - unknown session / booking ids
+  ---
+  duration_ms: 23.883259
+  type: 'test'
+  ...
+# Subtest: session cannot start while charger is under maintenance
+ok 56 - session cannot start while charger is under maintenance
+  ---
+  duration_ms: 23.887795
+  type: 'test'
+  ...
+# ◇ injected env (1) from .env
+# Subtest: invalid slot_id values -> 400 VALIDATION_ERROR (and nothing is written)
+ok 57 - invalid slot_id values -> 400 VALIDATION_ERROR (and nothing is written)
+  ---
+  duration_ms: 204.135016
+  type: 'test'
+  ...
+# Subtest: malformed JSON and non-object bodies -> 400, not 500
+ok 58 - malformed JSON and non-object bodies -> 400, not 500
+  ---
+  duration_ms: 12.899503
+  type: 'test'
+  ...
+# Subtest: SQL-injection style input is treated as plain data (parameterised queries)
+ok 59 - SQL-injection style input is treated as plain data (parameterised queries)
+  ---
+  duration_ms: 25.233232
+  type: 'test'
+  ...
+# Subtest: invalid admin payloads are rejected with field-level messages
+ok 60 - invalid admin payloads are rejected with field-level messages
+  ---
+  duration_ms: 93.223659
+  type: 'test'
+  ...
+# Subtest: unknown routes -> 404 JSON; missing/invalid auth -> 401
+ok 61 - unknown routes -> 404 JSON; missing/invalid auth -> 401
+  ---
+  duration_ms: 13.260671
+  type: 'test'
+  ...
+# Subtest: errors never leak SQL text or stack traces
+ok 62 - errors never leak SQL text or stack traces
+  ---
+  duration_ms: 11.233324
+  type: 'test'
+  ...
+# Subtest: procedure input guards (called directly) also reject bad IDs
+ok 63 - procedure input guards (called directly) also reject bad IDs
+  ---
+  duration_ms: 5.803851
+  type: 'test'
+  ...
+# Subtest: T02 duplicate email is rejected by the UNIQUE constraint
+ok 64 - T02 duplicate email is rejected by the UNIQUE constraint
+  ---
+  duration_ms: 6.383988
+  type: 'test'
+  ...
+1..64
+# tests 64
+# suites 0
+# pass 64
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 8581.681784

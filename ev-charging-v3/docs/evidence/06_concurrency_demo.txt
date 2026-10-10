@@ -1,0 +1,20 @@
+◇ injected env (1) from .env
+
+Slot 913 is AVAILABLE. User A (id 92) and User B (id 93) both click "Book" now...
+
+User A: HTTP 201  SUCCESS booking_id=48
+User B: HTTP 409  REJECTED SLOT_UNAVAILABLE - Slot is not available (already booked or blocked)
+
+Database evidence:
+┌─────────┬────────────┬─────────┬─────────┬─────────────┬────────────────┐
+│ (index) │ booking_id │ user_id │ slot_id │ status      │ active_slot_id │
+├─────────┼────────────┼─────────┼─────────┼─────────────┼────────────────┤
+│ 0       │ 48         │ 92      │ 913     │ 'CONFIRMED' │ 913            │
+└─────────┴────────────┴─────────┴─────────┴─────────────┴────────────────┘
+┌─────────┬─────────┬──────────┐
+│ (index) │ slot_id │ status   │
+├─────────┼─────────┼──────────┤
+│ 0       │ 913     │ 'BOOKED' │
+└─────────┴─────────┴──────────┘
+Exactly one active booking exists for the slot -> double booking prevented.
+
